@@ -10,7 +10,7 @@ function Form(){
     const [animalsData, setAnimalsData] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:3000/animalsData')
+        fetch('https://dogdata.onrender.com/animalsData')
         .then(res => res.json())
         .then((data) => setAnimalsData(data))
     }, [])
@@ -25,7 +25,7 @@ function Form(){
             comments: comments,
             donations: 0
         };
-        fetch(`http://localhost:3000/animalsData`, {
+        fetch(`https://dogdata.onrender.com/animalsData`, {
             method: 'POST',
             headers:{
                 "Content-Type" : "application/json"
@@ -45,7 +45,7 @@ function Form(){
             donations: animalToUpdate.donations + 10
         };
 
-        fetch(`http://localhost:3000/animalsData/${id}`, {
+        fetch(`https://dogdata.onrender.com/animalsData/${id}`, {
             method: "PATCH",
             headers:{
                 'Content-Type': 'application/json'
@@ -56,7 +56,7 @@ function Form(){
         .then(data => setAnimalsData(animalsData.map(animal => animal.id === id ? data : animal)));
     }
     function handleDeleteAnimal(id){
-        fetch(`http://localhost:3000/animalsData/${id}`, {
+        fetch(`https://dogdata.onrender.com/animalsData/${id}`, {
             method: "DELETE"
         })
         .then((res) => res.json())
